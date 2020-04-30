@@ -128,9 +128,9 @@ void wektorTestowyDwu(){
 }
 
 void klasa(){
-	Tablica dupa(2, 3);
-	Tablica dupa2;
-	cout<<"Wielkosc konstuktora bezargumentowego: "<<dupa2.wektor.size()<<" x "<<dupa2.wektor[0].size()<<endl;
-	dupa.test();
-	dupa.stworz();
+	Tablica test(2, 3);
+	Tablica test2;
+	cout<<"Wielkosc konstuktora bezargumentowego: "<<test2.wektor.size()<<" x "<<test2.wektor[0].size()<<endl;
+	test.test();
+	test.stworz();
 }
