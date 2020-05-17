@@ -29,3 +29,39 @@ void tablica_Dynamiczna_Jedno(){
 	}
 	cout<<endl;
 }
+
+int test_przestrzeni(){
+	int a = 3;
+	int b = 4;
+	int** tablica;
+	tablica = new int* [a];
+	for(int i = 0; i < a; i++){
+		tablica[i] = new int [b];
+	}
+	for(int i = 0; i < a; i++){
+		for(int j = 0; j < b; j++){
+			cout<<tablica[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	for(int i = 0; i < a; i++){
+		delete [] tablica[i];
+	}
+	delete [] tablica;
+	
+	a = 2;
+	b = 3;
+	tablica = new int* [a];
+	for(int i = 0; i < a; i++){
+		tablica[i] = new int [b];
+	}
+	for(int i = 0; i < a; i++){
+		for(int j = 0; j < b; j++){
+			cout<<tablica[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	cout<<tablica[2][16]<<endl;
+	return 0;
+	
+}
