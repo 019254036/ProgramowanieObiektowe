@@ -1,5 +1,7 @@
 #include "menu.h"
 
+using namespace std;
+
 int przywitanie(){
 	system("clear");
 	cout<<"Witaj w prostym arkuszu kalkulacyjnym!"<<endl;

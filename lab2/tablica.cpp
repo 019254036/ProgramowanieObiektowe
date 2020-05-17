@@ -1,5 +1,6 @@
 #include "tablica.h"
 
+using namespace std;
 
 int **zmien_rozmiar(int **tab, int *iloscWierszy, int *iloscKolumn){
 	if(*iloscWierszy){
