@@ -2,40 +2,33 @@
 
 using namespace std;
 
+int **test_rozmiar(int **tab, int iloscWierszy, int iloscKolumn){
+
+	tab = new int* [iloscWierszy];
+		for(int i = 0; i < iloscWierszy; i++){
+			tab[i] = new int [iloscKolumn];
+			for(int j = 0; j < iloscKolumn; j++){
+				tab[i][j] = 0;
+			}
+		}
+	return tab;
+}
+
+
 int main(){
 	int menuValue=0;
 	int **tab;
-	int iloscWierszy = 6;
-	int iloscKolumn = 5;
+	int iloscWierszy = 16;
+	int iloscKolumn = 6;
 
-	tab = new int* [iloscWierszy];
-	for(int i = 0; i < iloscWierszy; i++){
-		tab[i] = new int [iloscKolumn];
-	}
-
-	for(int i = 0; i < iloscWierszy; i++){
-		delete [] tab[i];
-	}
-	delete [] tab;
-
-	iloscWierszy = 16;
-	iloscKolumn = 3;
-	tab = new int* [iloscWierszy];
-	for(int i = 0; i < iloscWierszy; i++){
-		tab[i] = new int [iloscKolumn];
-	}
-
-
-	for(int i1 = 0; i1 < iloscWierszy; i1++){
-		for(int i2 = 0; i2 < iloscKolumn; i2++){
-			std::cout<<tab[i1][i2]<<" ";	
-		}
-		std::cout<<std::endl;
-	}
+	tab = test_rozmiar(tab, iloscWierszy, iloscKolumn);
+	cout<<tab[8][7];
+	
 
 	while(iloscWierszy){
 		iloscWierszy--;	
 		delete [] tab[iloscWierszy];
+		cout<<"Usuwanie: "<<iloscWierszy<<endl;
 	}
 	delete [] tab;
 

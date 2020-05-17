@@ -7,34 +7,38 @@
 int main(){
 	int menuValue=0;
 	int **tab;
-	int iloscWierszy;
+	int iloscWierszy = 0;
 	int iloscKolumn;
 
-		cin>>iloscWierszy;
-		cin>>iloscKolumn;
+	przywitanie();
+	while(true){
+		menu(&menuValue);
+		system("clear");
+		if(!menuValue) break;
 
-/* dziala jak marzenie, pozniejsze rysowanie tablicy z funkcji tez sztosik:
-		tab = new int* [iloscWierszy];
-		for(int i = 0; i < iloscWierszy; i++){
-			tab[i] = new int [iloscKolumn];
-			for(int j = 0; j < iloscKolumn; j++){
-				tab[i][j] = 0;
-			}
+		switch(menuValue){
+
+			case 1:
+				rysuj_tablice(tab, iloscWierszy, iloscKolumn);
+				break;
+			case 2:
+				tab = zmien_rozmiar(tab, &iloscWierszy, &iloscKolumn);
+				break;
+			case 3:
+				aktualizuj_wartosc(tab, iloscWierszy, iloscKolumn);
+				break;
+			default:
+				std::cout<<"Opcja niedostepna"<<std::endl;	
 		}
-*/
-
-		zmien_rozmiar(tab, iloscWierszy, iloscKolumn);//w funkcji ten sam kod co wyzej, nie dziala :v
-		rysuj_tablice(tab, iloscWierszy, iloscKolumn);//funkcja rysuje i tyle, dopiero przy probie rysowania wywala segmentation faulta...
-
+			
+	}
 	//usuniecie tablicy
 	while(iloscWierszy){
 		iloscWierszy--;	
 		delete [] tab[iloscWierszy];
 	}
 	delete [] tab;
-
-	cout<<"Usunieto"<<endl;
-
+	
 	return 0;
 }
 
