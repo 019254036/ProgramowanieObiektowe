@@ -1,5 +1,4 @@
 #include "menu.h"
-#include "tablica_wysw.h"
 
 int przywitanie(){
 	system("clear");
@@ -8,12 +7,13 @@ int przywitanie(){
 	return 0;
 }
 
-int menu(int* menuValue){
-	cout<<"[1] Opcja 1"<<endl;
-	cout<<"[2] Opcja 2"<<endl;
-	cout<<"[3] Opcja 3"<<endl;
-	cout<<"[4] Opcja 4"<<endl;
+int menu(int *menuValue){
+	int value;
+	cout<<"[1] Wyswietl tablice"<<endl;
+	cout<<"[2] Zmien rozmiar tablicy"<<endl;
+	cout<<"[3] Przypisz wartosc do komorki"<<endl;
 	cout<<"[0] Zakoncz"<<endl;
-	cin>> *menuValue;
+	cin>>value;
+	*menuValue = value;
 	return 0;
 }
