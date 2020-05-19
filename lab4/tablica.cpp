@@ -8,6 +8,7 @@ Tablica::Tablica(){
 
 Tablica::~Tablica(){ }
 /*	not sure if i understand destructors. shouldnt i free allocated memory?
+	Reminder: passing Tablica tab and not Tablica *tab to choose() in menu creates issue with destructor?
 	std::cout<<"start destruktora"<<std::endl;
 	for (int i = 0; i < sizeX; i++)
 	{
