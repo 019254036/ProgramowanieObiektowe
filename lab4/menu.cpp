@@ -9,7 +9,7 @@ int przywitanie(){
 }
 
 int menu(){	
-	cout<<endl;
+	cout<<"\n------------------------------------------"<<endl;
 	cout<<"[1] Wyswietl tablice"<<endl;
 	cout<<"[2] Zmien rozmiar tablicy"<<endl;
 	cout<<"[3] Przypisz wartosc do komorki"<<endl;
@@ -63,6 +63,7 @@ int choose(Tablica tab){
 				tab.load();
 				break;
 			case 6:
+				tab.print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -86,6 +87,7 @@ int choose(Tablica tab){
 				tab.sum(x, w);
 				break;
 			case 7:
+				tab.print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -109,6 +111,7 @@ int choose(Tablica tab){
 				tab.findMin(x, w);
 				break;
 			case 8:
+				tab.print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -132,6 +135,7 @@ int choose(Tablica tab){
 				tab.findMax(x, w);
 				break;
 			case 9:
+				tab.print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -154,7 +158,11 @@ int choose(Tablica tab){
 				}
 				tab.findCen(x, w);
 				break;
+			default:
+				cout<<"Opcja niedostepna, sprobuj ponownie"<<endl;
+				break;
 		}
 	}while(option);
+	cout<<"See you soon!"<<endl;
 	return 0;
 }

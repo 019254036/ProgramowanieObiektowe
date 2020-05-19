@@ -6,15 +6,21 @@ Tablica::Tablica(){
 	int** arr;
 }
 
-Tablica::~Tablica(){
+Tablica::~Tablica(){ }
+/*	not sure if i understand destructors. shouldnt i free allocated memory?
+	std::cout<<"start destruktora"<<std::endl;
 	for (int i = 0; i < sizeX; i++)
 	{
 		delete [] arr[i];
+		std::cout<<"Usunieto "<<i<<std::endl;
 	}
 	delete [] arr;
-}
 
-int Tablica::print(){
+	std::cout<<"koniec destruktora"<<std::endl;
+}
+*/
+int Tablica::print()
+{
 	for (int i = 0; i < sizeX; i++){
 		for(int j = 0; j < sizeY; j++){
 			std::cout<<arr[i][j]<<" ";
@@ -22,15 +28,7 @@ int Tablica::print(){
 		std::cout<<std::endl;
 	}
 }
-int Tablica::setSize(int x, int y){
-
-	if(sizeX){
-		for(int i = 0; i < sizeX; i++){
-			delete [] arr[i];
-		}
-		delete [] arr;
-	}
-		
+int Tablica::setSize(int x, int y){	
 	sizeX = x;
 	sizeY = y;
 	
@@ -41,7 +39,7 @@ int Tablica::setSize(int x, int y){
 			arr[i][j] = 0;
 		}
 	}
-	std::cout<<"Zmieniono rozmiar tablicy"<<std::endl;
+	std::cout<<"Zmieniono rozmiar tablicy";
 	return 0;
 }
 
@@ -59,23 +57,23 @@ int Tablica::sum(int xy, bool x){
 	int sum = 0;
 	if (x){
 		if (xy > sizeX){
-			std::cout<<"Blad rozmiaru"<<std::endl;
+			std::cout<<"Blad rozmiaru";
 			return -1;
 		}
 		for (int i = 0; i < sizeY; i++){
 			sum += arr[xy-1][i];
 		}
-		std::cout<<"Suma dla "<<xy<<" wiersza: "<<sum<<std::endl;
+		std::cout<<"Suma dla "<<xy<<" wiersza: "<<sum;
 		return 0;
 	}
 	if (xy > sizeY){
-			std::cout<<"Blad rozmiaru"<<std::endl;
+			std::cout<<"Blad rozmiaru";
 			return -1;
 		}
 		for (int i = 0; i < sizeX; i++){
 			sum += arr[i][xy-1];
 		}
-		std::cout<<"Suma dla "<<xy<<" kolumny: "<<sum<<std::endl;
+		std::cout<<"Suma dla "<<xy<<" kolumny: "<<sum;
 		return 0;
 }
 
@@ -83,26 +81,26 @@ int Tablica::findMin(int xy, bool x){
 	int value = 0;
 	if(x){
 		if(xy > sizeX){
-			std::cout<<"Blad wielkosci"<<std::endl;
+			std::cout<<"Blad wielkosci";
 			return -1;
 		}
 		value = arr[xy-1][0];
 		for(int i = 1; i < sizeY; i++){
 			if(value > arr[xy-1][i]) value = arr[xy-1][i];
 		}
-		std::cout<<"Najmniejsza wartosc dla "<<xy<<" wiersza: "<<value<<std::endl;
+		std::cout<<"Najmniejsza wartosc dla "<<xy<<" wiersza: "<<value;
 		return 0;
 	}
 	
 	if(xy > sizeY){
-		std::cout<<"Blad wielkosci"<<std::endl;
+		std::cout<<"Blad wielkosci";
 		return -1;
 	}
 	value = arr[0][xy-1];
 	for(int i = 1; i < sizeX; i++){
 		if(value > arr[i][xy-1]) value = arr[i][xy-1];
 	}
-	std::cout<<"Najmniejsza wartosc dla "<<xy<<" kolumny: "<<value<<std::endl;
+	std::cout<<"Najmniejsza wartosc dla "<<xy<<" kolumny: "<<value;
 	return 0;
 }
 
@@ -110,26 +108,26 @@ int Tablica::findMax(int xy, bool x){
 	double value = 0;
 	if(x){
 		if(xy > sizeX){
-			std::cout<<"Blad wielkosci"<<std::endl;
+			std::cout<<"Blad wielkosci";
 			return -1;
 		}
 		value = arr[xy-1][0];
 		for(int i = 1; i < sizeY; i++){
 			if(value < arr[xy-1][i]) value = arr[xy-1][i];
 		}
-		std::cout<<"Najwieksza wartosc dla "<<xy<<" wiersza: "<<value<<std::endl;
+		std::cout<<"Najwieksza wartosc dla "<<xy<<" wiersza: "<<value;
 		return 0;
 	}
 	
 	if(xy > sizeY){
-		std::cout<<"Blad wielkosci"<<std::endl;
+		std::cout<<"Blad wielkosci";
 		return -1;
 	}
 	value = arr[0][xy-1];
 	for(int i = 1; i < sizeX; i++){
 		if(value < arr[i][xy-1]) value = arr[i][xy-1];
 	}
-	std::cout<<"Najwieksza wartosc dla "<<xy<<" kolumny: "<<value<<std::endl;
+	std::cout<<"Najwieksza wartosc dla "<<xy<<" kolumny: "<<value;
 	return 0;
 }
 
@@ -137,30 +135,30 @@ int Tablica::findCen(int xy, bool x){
 	int value = 0;
 	if(x){
 		if(xy > sizeX){
-			std::cout<<"Blad wielkosci"<<std::endl;
+			std::cout<<"Blad wielkosci";
 			return -1;
 		}
 		for(int i = 0; i < sizeY; i++){
 			value += arr[xy-1][i];
 		}
-		std::cout<<"Srednia wartosc dla "<<xy<<" wiersza: "<<value/sizeY<<std::endl;
+		std::cout<<"Srednia wartosc dla "<<xy<<" wiersza: "<<value/sizeY;
 		return 0;
 	}
 	
 	if(xy > sizeY){
-		std::cout<<"Blad wielkosci"<<std::endl;
+		std::cout<<"Blad wielkosci";
 		return -1;
 	}
 	for(int i = 0; i < sizeX; i++){
 		value += arr[i][xy-1];
 	}
-	std::cout<<"Srednia wartosc dla "<<xy<<" kolumny: "<<value/sizeX<<std::endl;
+	std::cout<<"Srednia wartosc dla "<<xy<<" kolumny: "<<value/sizeX;
 	return 0;
 }
 
 int Tablica::save(){
 	std::ofstream plik;
-	plik.open ("dane.txt", std::fstream::out);
+	plik.open ("dane.txt");
 	plik << sizeX;
 	plik << "\n";
 	plik << sizeY;
@@ -173,18 +171,11 @@ int Tablica::save(){
 		plik << "\n";
 	}
 	plik.close();
-	std::cout<<"Zapisano tablice do pliku dane.txt"<<std::endl;
+	std::cout<<"Zapisano tablice do pliku dane.txt";
 	return 0;
 }
 
 int Tablica::load(){
-	if(sizeX){
-		for (int i = 0; i < sizeX; i++){
-			delete [] arr[i];
-		}
-		delete [] arr;
-	}
-
 	std::ifstream plik;
 	std::string wartosc;
 
@@ -208,6 +199,6 @@ int Tablica::load(){
 		}
 	}
 	plik.close();
-	std::cout<<"Wczytano tablice"<<std::endl;
+	std::cout<<"Wczytano tablice";
 	return 0;
 }

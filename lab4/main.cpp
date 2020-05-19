@@ -5,6 +5,7 @@
 int main(){
 	Tablica tab;
 	
+	przywitanie();
 	choose(tab);
 	return 0;
 }
