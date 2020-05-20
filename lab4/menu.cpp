@@ -23,7 +23,7 @@ int menu(){
 	return 0;
 }
 
-int choose(Tablica tab){
+int choose(Tablica* tab){
 	int option = 0;
 	int x;
 	int y;
@@ -38,14 +38,14 @@ int choose(Tablica tab){
 			case 0:
 				break;
 			case 1:
-				tab.print();
+				tab->print();
 				break;
 			case 2:
 				cout<<"Podaj ilosc wierszy: ";
 				cin>>x;
 				cout<<"Podaj ilosc kolumn: ";
 				cin>>y;
-				tab.setSize(x, y);
+				tab->setSize(x, y);
 				break;
 			case 3:
 				cout<<"Podaj wiersz komorki: ";
@@ -54,16 +54,16 @@ int choose(Tablica tab){
 				cin>>y;
 				cout<<"Podaj wartosc: ";
 				cin>>value;
-				tab.setValue(x, y, value);
+				tab->setValue(x, y, value);
 				break;
 			case 4:
-				tab.save();
+				tab->save();
 				break;
 			case 5:
-				tab.load();
+				tab->load();
 				break;
 			case 6:
-				tab.print();
+				tab->print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -84,10 +84,10 @@ int choose(Tablica tab){
 					cout<<"Blad wielkosci"<<endl;
 					break;
 				}
-				tab.sum(x, w);
+				tab->sum(x, w);
 				break;
 			case 7:
-				tab.print();
+				tab->print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -108,10 +108,10 @@ int choose(Tablica tab){
 					cout<<"Blad wielkosci"<<endl;
 					break;
 				}
-				tab.findMin(x, w);
+				tab->findMin(x, w);
 				break;
 			case 8:
-				tab.print();
+				tab->print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -132,10 +132,10 @@ int choose(Tablica tab){
 					cout<<"Blad wielkosci"<<endl;
 					break;
 				}
-				tab.findMax(x, w);
+				tab->findMax(x, w);
 				break;
 			case 9:
-				tab.print();
+				tab->print();
 				cout<<"[1]Wiersz"<<endl;
 				cout<<"[2]Kolumna"<<endl;
 				cin>>y;
@@ -156,7 +156,7 @@ int choose(Tablica tab){
 					cout<<"Blad wielkosci"<<endl;
 					break;
 				}
-				tab.findCen(x, w);
+				tab->findCen(x, w);
 				break;
 			default:
 				cout<<"Opcja niedostepna, sprobuj ponownie"<<endl;

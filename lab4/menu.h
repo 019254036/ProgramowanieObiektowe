@@ -3,4 +3,4 @@
 
 int przywitanie();
 int menu();
-int choose(Tablica tab);
+int choose(Tablica* tab);

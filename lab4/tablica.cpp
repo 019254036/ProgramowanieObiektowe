@@ -3,23 +3,17 @@
 Tablica::Tablica(){
 	int sizeX = 0;
 	int sizeY = 0;	
-	int** arr;
+	int** arr = new int* [0];
 }
 
-Tablica::~Tablica(){ }
-/*	not sure if i understand destructors. shouldnt i free allocated memory?
-	Reminder: passing Tablica tab and not Tablica *tab to choose() in menu creates issue with destructor?
-	std::cout<<"start destruktora"<<std::endl;
+Tablica::~Tablica(){ 
 	for (int i = 0; i < sizeX; i++)
 	{
 		delete [] arr[i];
-		std::cout<<"Usunieto "<<i<<std::endl;
 	}
 	delete [] arr;
-
-	std::cout<<"koniec destruktora"<<std::endl;
 }
-*/
+
 int Tablica::print()
 {
 	for (int i = 0; i < sizeX; i++){
