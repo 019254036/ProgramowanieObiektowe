@@ -1,30 +1,18 @@
 #include <iostream>
-
+#include <sstream>
 #pragma once
 
 
 class Cell
 {
-public:
-	bool math;
-	int mathValue;
+private:
 	std::string value;
-
+	int intValue;
+	bool iValue;
+public:
 	Cell();
-	void get_value();
+	int inputValue();
 	friend std::ostream& operator<<(std::ostream& os, Cell& cl);
+	friend std::istream& operator>>(std::istream& is, Cell& cl);
 };
-
-class intValue : public Cell
-{
-public:
-	void get_value();
-};
-
-class strValue : public Cell
-{
-public:
-	void get_value();
-};
-
 

@@ -10,16 +10,12 @@ int main(){
 //	choose(&tab);
 
 	Cell test1;
-	intValue test2;	
-	strValue test3;
-
-	test1.get_value();
-	test2.get_value();
-	test3.get_value();
-	
+	test1.inputValue();
+	std::cout<<"temporary cout output (value | intValue | iValue): \n"<<test1<<std::endl;
+	std::cout<<"Input another value: ";
+	std::cin>>test1;
 	std::cout<<test1<<std::endl;
-	std::cout<<test2<<std::endl;
-	std::cout<<test3<<std::endl;
+
 	return 0;
 }
 

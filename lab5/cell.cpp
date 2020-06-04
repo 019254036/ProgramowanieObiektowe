@@ -4,39 +4,38 @@ using namespace std;
 
 Cell::Cell()
 {
-	bool math = 0;
-	int mathValue = 0;
-	string value = " ";
+	std::string value = "";
+	int intValue = 0;
+	bool iValue = false;
 }
 
-void Cell::get_value()
+int Cell::inputValue()
 {
-	cout<<"Enter your value: ";
-	cin>>value;
-}
-
-void intValue::get_value()
-{
-	if(math)
-	{
-		mathValue = stoi(value);
-		math = 1;
-	}
-	else
-	{
-		cout<<"Enter you numerical value: ";
-		cin>>mathValue;
-	}
-}
-
-void strValue::get_value(){
-	cout<<"Enter your string value: ";
-	cin>>value;
+//getting an input
+	cout<<"Input your desired value: ";
+	getline(cin, value);
+	
+//checking if value is viable for mathematical operations
+	std::stringstream convertor;
+	convertor<<value;
+	convertor>>intValue; //if unable to, intValue = 0 by default
+	if(!convertor.fail()) iValue = true;
+	else iValue = false;
+	return 0;
 }
 
 ostream& operator<<(ostream& os, Cell& cl)
 {
-	if(cl.mathValue) os << cl.mathValue; return os;
-	os << cl.value;
-	return os;
+	return os<< cl.value << " " << cl.intValue << " " << cl.iValue;
+}
+
+istream& operator>>(istream& is, Cell& cl)
+{
+	is >> cl.value;
+	std::stringstream convertor;
+	convertor<<cl.value;
+	convertor>>cl.intValue; //if unable to, intValue = 0 by default
+	if(!convertor.fail()) cl.iValue = true;
+	else cl.iValue = false;
+	return is;
 }

@@ -22,6 +22,7 @@ int Tablica::print()
 		}
 		std::cout<<std::endl;
 	}
+	return 0;
 }
 int Tablica::setSize(int x, int y){	
 	sizeX = x;

@@ -1,5 +1,5 @@
 arkusz: main.o menu.o tablica.o cell.o
-	g++ main.o menu.o tablica.o -o arkusz
+	g++ main.o menu.o tablica.o cell.o -o arkusz
 
 menu.o: menu.cpp
 	g++ -c menu.cpp

@@ -1,24 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include "cell.h"
+#pragma once
 
-/*
-//niepoprawne zastosowanie klasy: krytyczne wlasciwosci umieszczone jako publiczne
-class Array{
-public:
-	int sizeX;
-	int sizeY;
-	int **arr;
-
-	int setSize(int x, int y);
-	int setValue(int x, int y, int value);
-		//...
-};
-*/
-
-#ifndef TABLICA_H
-#define TABLICA_H
-
-//poprawne zastosowanie klasy: dostep tylko do metod, ktore wplywaja na pozostale parametry
 class Tablica{
 	int sizeX;
 	int sizeY;
@@ -39,4 +23,3 @@ public:
 	int load();
 };
 
-#endif

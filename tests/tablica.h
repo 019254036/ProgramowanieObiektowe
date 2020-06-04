@@ -1,7 +1,7 @@
-#pragma once
 #include <iostream>
 #include <fstream>
-//#include "cell.h"
+#include "cell.h"
+#pragma once
 
 class Tablica{
 	int sizeX;
