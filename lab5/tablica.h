@@ -6,10 +6,9 @@
 class Tablica{
 	int sizeX;
 	int sizeY;
-public:	
 	Cell **arr;
 
-//public:
+public:
 	Tablica();
 	~Tablica();
 
