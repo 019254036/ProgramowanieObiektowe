@@ -11,8 +11,10 @@ private:
 	bool iValue;
 public:
 	Cell();
-	int inputValue();
-	friend std::ostream& operator<<(std::ostream& os, Cell& cl);
-	friend std::istream& operator>>(std::istream& is, Cell& cl);
+	bool ghostIValue(); //diagnostic purpose only
+	std::string inputValue();
+	std::string Value();
+	int IValue();
+	std::string setValue(std::string v);
 };
 

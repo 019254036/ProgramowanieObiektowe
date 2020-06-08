@@ -9,7 +9,12 @@ Cell::Cell()
 	bool iValue = false;
 }
 
-int Cell::inputValue()
+bool Cell::ghostIValue() 
+{
+	return iValue;
+}
+
+string Cell::inputValue()
 {
 //getting an input
 	cout<<"Input your desired value: ";
@@ -21,21 +26,29 @@ int Cell::inputValue()
 	convertor>>intValue; //if unable to, intValue = 0 by default
 	if(!convertor.fail()) iValue = true;
 	else iValue = false;
-	return 0;
+	return value;
 }
 
-ostream& operator<<(ostream& os, Cell& cl)
+string Cell::Value()
 {
-	return os<< cl.value << " " << cl.intValue << " " << cl.iValue;
+	return value;
 }
 
-istream& operator>>(istream& is, Cell& cl)
+int Cell::IValue()
 {
-	is >> cl.value;
+	if(iValue) return intValue;
+	else return 0;
+}
+
+string Cell::setValue(string v)
+{
+	value = v;
 	std::stringstream convertor;
-	convertor<<cl.value;
-	convertor>>cl.intValue; //if unable to, intValue = 0 by default
-	if(!convertor.fail()) cl.iValue = true;
-	else cl.iValue = false;
-	return is;
+	convertor<<value;
+	convertor>>intValue; //if unable to, intValue = 0 by default
+	if(!convertor.fail()) iValue = true;
+	else iValue = false;
+	return value;
 }
+
+

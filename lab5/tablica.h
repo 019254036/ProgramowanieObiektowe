@@ -6,15 +6,16 @@
 class Tablica{
 	int sizeX;
 	int sizeY;
-	int **arr;
+public:	
+	Cell **arr;
 
-public:
+//public:
 	Tablica();
 	~Tablica();
 
 	int print();
 	int setSize(int x, int y);
-	int setValue(int x, int y, int value);
+	int setValue(int x, int y, std::string value);
 	int sum(int xy, bool x);
 	int findMin(int xy, bool x);
 	int findMax(int xy, bool x);
