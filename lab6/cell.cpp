@@ -1,55 +1,54 @@
 #include "cell.h"
 
 using namespace std;
-/*
+
 Cell::Cell()
 {
 	std::string value = "";
 	int intValue = 0;
 	bool iValue = false;
 }
-*/
-int IntCell::inputValue()
+
+bool Cell::ghostIValue() 
 {
-	cout<<"Input your int value: ";
-	cin>>value;
-	return 0;
+	return iValue;
 }
 
-int StrCell::inputValue()
+string Cell::inputValue()
 {
-	cout<<"Input your string value: ";
-	cin>>value;
-	return 0;
-}
-
-
-//overloading operators for IntCell
-ostream& operator<<(ostream& os, IntCell& cl)
-{
-	return os<< cl.value;
-}
-
-istream& operator>>(istream& is, IntCell& cl)
-{
-	is >> cl.value;
+//getting an input
+	cout<<"Input your desired value: ";
+	getline(cin, value);
+	
+//checking if value is viable for mathematical operations
 	std::stringstream convertor;
-	convertor<<cl.value;
-	convertor>>cl.value;
-	return is;
+	convertor<<value;
+	convertor>>intValue; //if unable to, intValue = 0 by default
+	if(!convertor.fail()) iValue = true;
+	else iValue = false;
+	return value;
 }
 
-//overloading operators for StrCell
-ostream& operator<<(ostream& os, StrCell& cl)
+string Cell::showValue()
 {
-	return os<< cl.value;
+	return value;
 }
 
-istream& operator>>(istream& is, StrCell& cl)
+int Cell::IValue()
 {
-	is >> cl.value;
+	if(iValue) return intValue;
+	else return 0;
+}
+
+string Cell::setValue(string v)
+{
+	value = v;
 	std::stringstream convertor;
-	convertor<<cl.value;
-	convertor>>cl.value;
-	return is;
+	convertor<<value;
+	convertor>>intValue; //if unable to, intValue = 0 by default
+	if(!convertor.fail()) iValue = true;
+	else iValue = false;
+	return value;
 }
+
+

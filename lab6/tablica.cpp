@@ -1,9 +1,11 @@
 #include "tablica.h"
 
+using namespace std;
+
 Tablica::Tablica(){
 	int sizeX = 0;
 	int sizeY = 0;	
-	int** arr = new int* [0];
+	Cell** arr = new Cell* [0];
 }
 
 Tablica::~Tablica(){ 
@@ -18,34 +20,49 @@ int Tablica::print()
 {
 	for (int i = 0; i < sizeX; i++){
 		for(int j = 0; j < sizeY; j++){
-			std::cout<<arr[i][j]<<" ";
+			std::cout<<arr[i][j].showValue()<<" ";
 		}
 		std::cout<<std::endl;
 	}
 	return 0;
 }
+
 int Tablica::setSize(int x, int y){	
 	sizeX = x;
 	sizeY = y;
 	
-	arr = new int* [sizeX];
+	arr = new Cell* [sizeX];
 	for(int i = 0; i < sizeX; i++){
-		arr[i] = new int [sizeY];
+		arr[i] = new Cell [sizeY];
 		for(int j = 0; j < sizeY; j++){
-			arr[i][j] = 0;
+			arr[i][j].setValue("0");
 		}
 	}
-	std::cout<<"Zmieniono rozmiar tablicy";
+	std::cout<<"Zmieniono rozmiar tablicy"<<std::endl;
 	return 0;
 }
 
-int Tablica::setValue(int x, int y, int value){
+int Tablica::setIntType(int x)
+{
+	arr[x] = new IntCell [sizeY];
+	cout<<"Value type set"<<endl;
+	for(int i = 0; i < sizeY; i++)
+	{
+//		cout<<"trying to assign value"<<endl;
+		arr[x][i].setValue(0);
+//		cout<<"value assigned"<<endl;
+	}
+	cout<<"Type set"<<endl;
+	return 0;
+}
+
+int Tablica::setValue(int x, int y, std::string value){
 	if(x > sizeX || y > sizeY){
 		std::cout<<"Blad rozmiaru"<<std::endl;
 		return -1;
 	}
 	
-	arr[x-1][y-1] = value;
+	arr[x-1][y-1].setValue(value);
 	return 0;
 }
 
@@ -57,9 +74,9 @@ int Tablica::sum(int xy, bool x){
 			return -1;
 		}
 		for (int i = 0; i < sizeY; i++){
-			sum += arr[xy-1][i];
+			sum += arr[xy-1][i].IValue();
 		}
-		std::cout<<"Suma dla "<<xy<<" wiersza: "<<sum;
+		std::cout<<"Suma dla "<<xy<<" wiersza: "<<sum<<std::endl;
 		return 0;
 	}
 	if (xy > sizeY){
@@ -67,9 +84,9 @@ int Tablica::sum(int xy, bool x){
 			return -1;
 		}
 		for (int i = 0; i < sizeX; i++){
-			sum += arr[i][xy-1];
+			sum += arr[i][xy-1].IValue();
 		}
-		std::cout<<"Suma dla "<<xy<<" kolumny: "<<sum;
+		std::cout<<"Suma dla "<<xy<<" kolumny: "<<sum<<std::endl;
 		return 0;
 }
 
@@ -80,11 +97,11 @@ int Tablica::findMin(int xy, bool x){
 			std::cout<<"Blad wielkosci";
 			return -1;
 		}
-		value = arr[xy-1][0];
+		value = arr[xy-1][0].IValue();
 		for(int i = 1; i < sizeY; i++){
-			if(value > arr[xy-1][i]) value = arr[xy-1][i];
+			if(value > arr[xy-1][i].IValue()) value = arr[xy-1][i].IValue();
 		}
-		std::cout<<"Najmniejsza wartosc dla "<<xy<<" wiersza: "<<value;
+		std::cout<<"Najmniejsza wartosc dla "<<xy<<" wiersza: "<<value<<std::endl;
 		return 0;
 	}
 	
@@ -92,11 +109,11 @@ int Tablica::findMin(int xy, bool x){
 		std::cout<<"Blad wielkosci";
 		return -1;
 	}
-	value = arr[0][xy-1];
+	value = arr[0][xy-1].IValue();
 	for(int i = 1; i < sizeX; i++){
-		if(value > arr[i][xy-1]) value = arr[i][xy-1];
+		if(value > arr[i][xy-1].IValue()) value = arr[i][xy-1].IValue();
 	}
-	std::cout<<"Najmniejsza wartosc dla "<<xy<<" kolumny: "<<value;
+	std::cout<<"Najmniejsza wartosc dla "<<xy<<" kolumny: "<<value<<std::endl;
 	return 0;
 }
 
@@ -107,11 +124,11 @@ int Tablica::findMax(int xy, bool x){
 			std::cout<<"Blad wielkosci";
 			return -1;
 		}
-		value = arr[xy-1][0];
+		value = arr[xy-1][0].IValue();
 		for(int i = 1; i < sizeY; i++){
-			if(value < arr[xy-1][i]) value = arr[xy-1][i];
+			if(value < arr[xy-1][i].IValue()) value = arr[xy-1][i].IValue();
 		}
-		std::cout<<"Najwieksza wartosc dla "<<xy<<" wiersza: "<<value;
+		std::cout<<"Najwieksza wartosc dla "<<xy<<" wiersza: "<<value<<std::endl;
 		return 0;
 	}
 	
@@ -119,11 +136,11 @@ int Tablica::findMax(int xy, bool x){
 		std::cout<<"Blad wielkosci";
 		return -1;
 	}
-	value = arr[0][xy-1];
+	value = arr[0][xy-1].IValue();
 	for(int i = 1; i < sizeX; i++){
-		if(value < arr[i][xy-1]) value = arr[i][xy-1];
+		if(value < arr[i][xy-1].IValue()) value = arr[i][xy-1].IValue();
 	}
-	std::cout<<"Najwieksza wartosc dla "<<xy<<" kolumny: "<<value;
+	std::cout<<"Najwieksza wartosc dla "<<xy<<" kolumny: "<<value<<std::endl;
 	return 0;
 }
 
@@ -135,9 +152,9 @@ int Tablica::findCen(int xy, bool x){
 			return -1;
 		}
 		for(int i = 0; i < sizeY; i++){
-			value += arr[xy-1][i];
+			value += arr[xy-1][i].IValue();
 		}
-		std::cout<<"Srednia wartosc dla "<<xy<<" wiersza: "<<value/sizeY;
+		std::cout<<"Srednia wartosc dla "<<xy<<" wiersza: "<<value/sizeY<<std::endl;
 		return 0;
 	}
 	
@@ -146,9 +163,9 @@ int Tablica::findCen(int xy, bool x){
 		return -1;
 	}
 	for(int i = 0; i < sizeX; i++){
-		value += arr[i][xy-1];
+		value += arr[i][xy-1].IValue();
 	}
-	std::cout<<"Srednia wartosc dla "<<xy<<" kolumny: "<<value/sizeX;
+	std::cout<<"Srednia wartosc dla "<<xy<<" kolumny: "<<value/sizeX<<std::endl;
 	return 0;
 }
 
@@ -161,13 +178,13 @@ int Tablica::save(){
 	plik << "\n";
 	for (int i = 0; i < sizeX; i++){
 		for(int j = 0; j < sizeY; j++){
-			plik << arr[i][j];
+			plik << arr[i][j].showValue();
 			plik << ",";
 		}
 		plik << "\n";
 	}
 	plik.close();
-	std::cout<<"Zapisano tablice do pliku dane.txt";
+	std::cout<<"Zapisano tablice do pliku dane.txt"<<std::endl;
 	return 0;
 }
 
@@ -182,19 +199,21 @@ int Tablica::load(){
 	getline(plik, wartosc, '\n');
 	sizeY = stoi(wartosc);
 
-	arr = new int* [sizeX];
+	arr = new Cell* [sizeX];
 	for(int i = 0; i < sizeX; i++){
-		arr[i] = new int [sizeY];
+		arr[i] = new Cell [sizeY];
 	}
 	
 	for(int i = 0; i < sizeX; i++){
 		for(int j = 0; j < sizeY; j++){
 			getline(plik, wartosc, ',');
 			if(wartosc == "\n") getline(plik, wartosc, ',');
-			arr[i][j] = stoi (wartosc);
+			arr[i][j].setValue(wartosc);
 		}
 	}
 	plik.close();
-	std::cout<<"Wczytano tablice";
+	std::cout<<"Wczytano tablice"<<std::endl;
 	return 0;
 }
+
+

@@ -27,7 +27,7 @@ int choose(Tablica* tab){
 	int option = 0;
 	int x;
 	int y;
-	int value;
+	std::string value;
 	bool w;
 	do
 	{

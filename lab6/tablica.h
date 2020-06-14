@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "cell.h"
+#include "intCell.h"
 #pragma once
 
 class Tablica{
 	int sizeX;
 	int sizeY;
-	int **arr;
+	Cell **arr;
 
 public:
 	Tablica();
@@ -14,7 +15,8 @@ public:
 
 	int print();
 	int setSize(int x, int y);
-	int setValue(int x, int y, int value);
+	int setIntType(int);
+	int setValue(int x, int y, std::string value);
 	int sum(int xy, bool x);
 	int findMin(int xy, bool x);
 	int findMax(int xy, bool x);
